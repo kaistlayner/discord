@@ -14,8 +14,8 @@ chattingId = 878736864633315358
 alarmLst = [] 
 alarmRunningLst = [] 
 alarmInfo = {}
-alarmInfo['alarmOn'] = True
-alarmInfo['alarmOn2'] = True
+alarmInfo['alarmOn'] = False
+alarmInfo['alarmOn2'] = False
 alarmInfo['alarmCnt'] = 0
 alarmLst2 = [] 
 
