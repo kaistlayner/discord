@@ -38,15 +38,19 @@ async def 루프():
         if curSec > 1:
             alarmLst.remove(curMin)
             await app.get_guild(serverId).get_channel(chattingId).send(f'이미 {curMin}분 이야!', tts=True)
+            await app.get_guild(serverId2).get_channel(chattingId2).send(f'이미 {curMin}분 이야!', tts=True)
             time.sleep(61-curSec)
             alarmLst.append(curMin)
         else:
             alarmLst.remove(curMin)
             await app.get_guild(serverId).get_channel(chattingId).send(f'{curMin}분!', tts=True)
+            await app.get_guild(serverId2).get_channel(chattingId2).send(f'{curMin}분!', tts=True)
             time.sleep(29)
             await app.get_guild(serverId).get_channel(chattingId).send(f'30초 전 ({curMin+1}분)', tts=True)
+            await app.get_guild(serverId).get_channel(chattingId2).send(f'30초 전 ({curMin+1}분)', tts=True)
             time.sleep(20)
             await app.get_guild(serverId).get_channel(chattingId).send(f'10초 전 ({curMin+1}분)', tts=True)
+            await app.get_guild(serverId).get_channel(chattingId2).send(f'10초 전 ({curMin+1}분)', tts=True)
             alarmLst.append(curMin)
             time.sleep(11)
 
@@ -60,15 +64,19 @@ async def 루프2():
             if curSec > 1:
                 alarmLst2.remove(curMin)
                 await app.get_guild(serverId).get_channel(chattingId).send(f'이미 {curMin}분 이야!', tts=True)
+                await app.get_guild(serverId2).get_channel(chattingId2).send(f'이미 {curMin}분 이야!', tts=True)
                 time.sleep(61-curSec)
                 alarmLst2.append(curMin)
             else:
                 alarmLst2.remove(curMin)
                 await app.get_guild(serverId).get_channel(chattingId).send(f'{curMin}분!', tts=True)
+                await app.get_guild(serverId2).get_channel(chattingId2).send(f'{curMin}분!', tts=True)
                 time.sleep(29)
                 await app.get_guild(serverId).get_channel(chattingId).send(f'30초 전 ({curMin+1}분)', tts=True)
+                await app.get_guild(serverId2).get_channel(chattingId2).send(f'30초 전 ({curMin+1}분)', tts=True)
                 time.sleep(20)
                 await app.get_guild(serverId).get_channel(chattingId).send(f'10초 전 ({curMin+1}분)', tts=True)
+                await app.get_guild(serverId2).get_channel(chattingId2).send(f'10초 전 ({curMin+1}분)', tts=True)
                 alarmLst2.append(curMin)
                 time.sleep(11)
 
