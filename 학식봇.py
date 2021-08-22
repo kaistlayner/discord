@@ -50,15 +50,20 @@ async def 루프():
             time.sleep(11)
     elif curMin in alarmLst2:
         if curHour % 2 == 0:
-            alarmLst2.remove(curMin)
-            await app.get_guild(serverId).get_channel(chattingId).send(f'{curMin}분!', tts=True)
-            time.sleep(29)
-            await app.get_guild(serverId).get_channel(chattingId).send(f'30초 전 ({curMin+1}분)', tts=True)
-            time.sleep(20)
-            await app.get_guild(serverId).get_channel(chattingId).send(f'10초 전 ({curMin+1}분)', tts=True)
-            alarmLst2.append(curMin)
-            time.sleep(11)
-
+            if curSec > 1:
+                alarmLst2.remove(curMin)
+                await app.get_guild(serverId).get_channel(chattingId).send(f'이미 {curMin}분 이야!', tts=True)
+                time.sleep(61-curSec)
+                alarmLst2.append(curMin)
+            else:
+                alarmLst2.remove(curMin)
+                await app.get_guild(serverId).get_channel(chattingId).send(f'{curMin}분!', tts=True)
+                time.sleep(29)
+                await app.get_guild(serverId).get_channel(chattingId).send(f'30초 전 ({curMin+1}분)', tts=True)
+                time.sleep(20)
+                await app.get_guild(serverId).get_channel(chattingId).send(f'10초 전 ({curMin+1}분)', tts=True)
+                alarmLst2.append(curMin)
+                time.sleep(11)
 
 @app.command()
 async def 추가(ctx, *input):
