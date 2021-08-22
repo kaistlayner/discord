@@ -21,7 +21,7 @@ alarmInfo['alarmOn'] = False
 
 @app.event
 async def on_ready():
-    print('다음으로 로그인합니다: ' + 'app.user.name')
+    print('다음으로 로그인합니다: ' + app.user.name)
     print('connection was successful')
     await app.change_presence(status=discord.Status.online, activity=None)
     await app.get_guild(테스트서버).get_channel(일반채팅).send(f'학식봇 재시작!')
@@ -46,7 +46,7 @@ async def 루프():
             await app.get_guild(야영지서버).get_channel(재획알림방).send(f'10초 전 ({curMin+1}분)', tts=True)
             await app.get_guild(메창서버).get_channel(재획알리미).send(f'10초 전 ({curMin+1}분)', tts=True)
             return
-    if curMin in alarmLst2 and curHour % 2 == 0:
+    if (curMin in alarmLst2) and (curHour % 2 == 0):
         if curSec == 0:
             await app.get_guild(야영지서버).get_channel(재획알림방).send(f'{curMin}분!', tts=True)
             await app.get_guild(메창서버).get_channel(재획알리미).send(f'{curMin}분!', tts=True)
