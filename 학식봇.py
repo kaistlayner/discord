@@ -4,15 +4,14 @@ from discord.ext import commands, tasks
 app = commands.Bot(command_prefix='알림')
 
 # 테스트 서버
-testServerId = 832286544496033843
-testChattingId = 832286544496033846
+테스트서버 = 832286544496033843
+일반채팅 = 832286544496033846
 # 야영지 서버
-serverId = 540930626505932800
-chattingId = 878736864633315358
+야영지서버 = 540930626505932800
+재획알림방 = 878736864633315358
 # 메--창 서버
-serverId2 = 808742146391801856
-chattingId2 = 878999964351606784
-
+메창서버 = 808742146391801856
+재획알리미 = 878999964351606784
 
 alarmLst = [] 
 alarmLst2 = [] 
@@ -25,7 +24,7 @@ async def on_ready():
     print('다음으로 로그인합니다: ' + 'app.user.name')
     print('connection was successful')
     await app.change_presence(status=discord.Status.online, activity=None)
-    await app.get_guild(testServerId).get_channel(testChattingId).send(f'학식봇 재시작!')
+    await app.get_guild(테스트서버).get_channel(일반채팅).send(f'학식봇 재시작!')
     alarmLst2.append(39)
 
 # TODO: 경뿌 알림이( 29분 59분)
@@ -36,29 +35,29 @@ async def 루프():
     curHour = datetime.datetime.now().hour
     if curMin in alarmLst:
         if curSec == 0:
-            await app.get_guild(serverId).get_channel(chattingId).send(f'{curMin}분!', tts=True)
-            await app.get_guild(serverId2).get_channel(chattingId2).send(f'{curMin}분!', tts=True)
+            await app.get_guild(야영지서버).get_channel(재획알림방).send(f'{curMin}분!', tts=True)
+            await app.get_guild(메창서버).get_channel(재획알리미).send(f'{curMin}분!', tts=True)
             return
         if curSec == 30:
-            await app.get_guild(serverId).get_channel(chattingId).send(f'30초 전 ({curMin+1}분)', tts=True)
-            await app.get_guild(serverId).get_channel(chattingId2).send(f'30초 전 ({curMin+1}분)', tts=True)
+            await app.get_guild(야영지서버).get_channel(재획알림방).send(f'30초 전 ({curMin+1}분)', tts=True)
+            await app.get_guild(메창서버).get_channel(재획알리미).send(f'30초 전 ({curMin+1}분)', tts=True)
             return
         if curSec == 50:
-            await app.get_guild(serverId).get_channel(chattingId).send(f'10초 전 ({curMin+1}분)', tts=True)
-            await app.get_guild(serverId).get_channel(chattingId2).send(f'10초 전 ({curMin+1}분)', tts=True)
+            await app.get_guild(야영지서버).get_channel(재획알림방).send(f'10초 전 ({curMin+1}분)', tts=True)
+            await app.get_guild(메창서버).get_channel(재획알리미).send(f'10초 전 ({curMin+1}분)', tts=True)
             return
     if curMin in alarmLst2 and curHour % 2 == 0:
         if curSec == 0:
-            await app.get_guild(serverId).get_channel(chattingId).send(f'{curMin}분!', tts=True)
-            await app.get_guild(serverId2).get_channel(chattingId2).send(f'{curMin}분!', tts=True)
+            await app.get_guild(야영지서버).get_channel(재획알림방).send(f'{curMin}분!', tts=True)
+            await app.get_guild(메창서버).get_channel(재획알리미).send(f'{curMin}분!', tts=True)
             return
         if curSec == 30:
-            await app.get_guild(serverId).get_channel(chattingId).send(f'30초 전 ({curMin+1}분)', tts=True)
-            await app.get_guild(serverId).get_channel(chattingId2).send(f'30초 전 ({curMin+1}분)', tts=True)
+            await app.get_guild(야영지서버).get_channel(재획알림방).send(f'30초 전 ({curMin+1}분)', tts=True)
+            await app.get_guild(메창서버).get_channel(재획알리미).send(f'30초 전 ({curMin+1}분)', tts=True)
             return
         if curSec == 50:
-            await app.get_guild(serverId).get_channel(chattingId).send(f'10초 전 ({curMin+1}분)', tts=True)
-            await app.get_guild(serverId).get_channel(chattingId2).send(f'10초 전 ({curMin+1}분)', tts=True)
+            await app.get_guild(야영지서버).get_channel(재획알림방).send(f'10초 전 ({curMin+1}분)', tts=True)
+            await app.get_guild(메창서버).get_channel(재획알리미).send(f'10초 전 ({curMin+1}분)', tts=True)
             return
 
 @app.command()
