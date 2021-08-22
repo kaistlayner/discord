@@ -21,7 +21,7 @@ alarmInfo['alarmCnt'] = 0
 async def on_ready():
     print('다음으로 로그인합니다: ' + 'app.user.name')
     print('connection was successful')
-    await app.change_presence(status=discord.Status.BOT, activity=None)
+    await app.change_presence(status=discord.Status.online, activity=None)
     await app.get_guild(serverId).get_channel(chattingId).send(f'학식봇 등장! 현재 분({datetime.datetime.now().minute}분 같은거)는 넣지 마세요.. 고장납니다 ㅠㅠ)')
 
 # TODO: 경뿌 알림이( 29분 59분)
