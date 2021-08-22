@@ -30,9 +30,10 @@ async def on_ready():
 # TODO: 경뿌 알림이( 29분 59분)
 @tasks.loop(seconds=1)
 async def 루프():
-    curSec = datetime.datetime.now().second
-    curMin = datetime.datetime.now().minute
-    curHour = datetime.datetime.now().hour
+    cur = datetime.datetime.now()
+    curSec = cur.second
+    curMin = cur.minute
+    curHour = cur.hour
     if curMin in alarmLst:
         if curSec == 0:
             await app.get_guild(야영지서버).get_channel(재획알림방).send(f'{curMin}분!', tts=True)
@@ -47,6 +48,12 @@ async def 루프():
             await app.get_guild(메창서버).get_channel(재획알리미).send(f'10초 전 ({curMin+1}분)', tts=True)
             return
     if (curMin in alarmLst2) and (curHour % 2 == 0):
+        print(curMin)
+        print(alarmLst2)
+        print(curMin in alarmLst2)
+        print(curHour)
+        print(curHour % 2 == 0)
+        
         if curSec == 0:
             await app.get_guild(야영지서버).get_channel(재획알림방).send(f'{curMin}분! 이벤트 버프 ', tts=True)
             await app.get_guild(메창서버).get_channel(재획알리미).send(f'{curMin}분! 이벤트 버프 ', tts=True)
