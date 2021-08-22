@@ -44,7 +44,7 @@ async def 루프():
     curHour = cur.hour + 9
     curDay = cur.day
     if curHour >= 24:
-        curHour -= curHour
+        curHour -= 24
         curDay += 1
     if curMin in alarmLst:
         if curSec == 0:
@@ -175,7 +175,7 @@ async def 지금(ctx):
     curHour = cur.hour + 9
     curDay = cur.day
     if curHour >= 24:
-        curHour -= curHour
+        curHour -= 24
         curDay += 1
     await ctx.send(f'{curDay}일 {curHour}시 {curMin}분 {curSec}초야!')
 
