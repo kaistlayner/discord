@@ -11,18 +11,18 @@ serverId = 540930626505932800
 chattingId = 878736864633315358
 #chattingId = 710809428450082876 음성채팅방 대화방
 
+alarmLst = [] 
+alarmRunningLst = [] 
+alarmInfo = {}
+alarmInfo['alarmOn'] = True
+alarmInfo['alarmCnt'] = 0
+
 @app.event
 async def on_ready():
     print('다음으로 로그인합니다: ' + 'app.user.name')
     print('connection was successful')
     await app.change_presence(status=discord.Status.BOT, activity=None)
-    print(f'학식봇 등장! 현재 분({datetime.datetime.now().minute}분 같은거)는 넣지 마세요.. 고장납니다 ㅠㅠ)')
-
-alarmLst = [] 
-alarmRunningLst = [] 
-alarmInfo = {}
-alarmInfo['alarmOn'] = False
-alarmInfo['alarmCnt'] = 0
+    await app.get_guild(serverId).get_channel(chattingId).send(f'학식봇 등장! 현재 분({datetime.datetime.now().minute}분 같은거)는 넣지 마세요.. 고장납니다 ㅠㅠ)')
 
 # TODO: 경뿌 알림이( 29분 59분)
 @tasks.loop(seconds=1)
