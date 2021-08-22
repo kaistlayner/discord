@@ -35,50 +35,31 @@ async def 루프():
     curMin = datetime.datetime.now().minute
     curHour = datetime.datetime.now().hour
     if curMin in alarmLst:
-        if curSec > 1:
-            alarmLst.remove(curMin)
-            await app.get_guild(serverId).get_channel(chattingId).send(f'이미 {curMin}분 이야!', tts=True)
-            await app.get_guild(serverId2).get_channel(chattingId2).send(f'이미 {curMin}분 이야!', tts=True)
-            time.sleep(61-curSec)
-            alarmLst.append(curMin)
-        else:
-            alarmLst.remove(curMin)
+        if curSec == 0:
             await app.get_guild(serverId).get_channel(chattingId).send(f'{curMin}분!', tts=True)
             await app.get_guild(serverId2).get_channel(chattingId2).send(f'{curMin}분!', tts=True)
-            time.sleep(29)
+            return
+        if curSec == 30:
             await app.get_guild(serverId).get_channel(chattingId).send(f'30초 전 ({curMin+1}분)', tts=True)
             await app.get_guild(serverId).get_channel(chattingId2).send(f'30초 전 ({curMin+1}분)', tts=True)
-            time.sleep(20)
+            return
+        if curSec == 50:
             await app.get_guild(serverId).get_channel(chattingId).send(f'10초 전 ({curMin+1}분)', tts=True)
             await app.get_guild(serverId).get_channel(chattingId2).send(f'10초 전 ({curMin+1}분)', tts=True)
-            alarmLst.append(curMin)
-            time.sleep(11)
-
-@tasks.loop(seconds=1)
-async def 루프2():
-    curSec = datetime.datetime.now().second
-    curMin = datetime.datetime.now().minute
-    curHour = datetime.datetime.now().hour
-    if curMin in alarmLst2:
-        if curHour % 2 == 0:
-            if curSec > 1:
-                alarmLst2.remove(curMin)
-                await app.get_guild(serverId).get_channel(chattingId).send(f'이미 {curMin}분 이야!', tts=True)
-                await app.get_guild(serverId2).get_channel(chattingId2).send(f'이미 {curMin}분 이야!', tts=True)
-                time.sleep(61-curSec)
-                alarmLst2.append(curMin)
-            else:
-                alarmLst2.remove(curMin)
-                await app.get_guild(serverId).get_channel(chattingId).send(f'{curMin}분!', tts=True)
-                await app.get_guild(serverId2).get_channel(chattingId2).send(f'{curMin}분!', tts=True)
-                time.sleep(29)
-                await app.get_guild(serverId).get_channel(chattingId).send(f'30초 전 ({curMin+1}분)', tts=True)
-                await app.get_guild(serverId2).get_channel(chattingId2).send(f'30초 전 ({curMin+1}분)', tts=True)
-                time.sleep(20)
-                await app.get_guild(serverId).get_channel(chattingId).send(f'10초 전 ({curMin+1}분)', tts=True)
-                await app.get_guild(serverId2).get_channel(chattingId2).send(f'10초 전 ({curMin+1}분)', tts=True)
-                alarmLst2.append(curMin)
-                time.sleep(11)
+            return
+    if curMin in alarmLst2 and curHour % 2 == 0:
+        if curSec == 0:
+            await app.get_guild(serverId).get_channel(chattingId).send(f'{curMin}분!', tts=True)
+            await app.get_guild(serverId2).get_channel(chattingId2).send(f'{curMin}분!', tts=True)
+            return
+        if curSec == 30:
+            await app.get_guild(serverId).get_channel(chattingId).send(f'30초 전 ({curMin+1}분)', tts=True)
+            await app.get_guild(serverId).get_channel(chattingId2).send(f'30초 전 ({curMin+1}분)', tts=True)
+            return
+        if curSec == 50:
+            await app.get_guild(serverId).get_channel(chattingId).send(f'10초 전 ({curMin+1}분)', tts=True)
+            await app.get_guild(serverId).get_channel(chattingId2).send(f'10초 전 ({curMin+1}분)', tts=True)
+            return
 
 @app.command()
 async def 추가(ctx, *input):
@@ -135,7 +116,6 @@ async def 켜기(ctx):
     if not alarmInfo['alarmOn']:
         alarmInfo['alarmOn'] = True
         루프.start()
-        루프2.start()
         await ctx.send("알림이 켜졌습니다!")
     else:
         await ctx.send("이미 알림이 켜져있어..!")
@@ -145,7 +125,6 @@ async def 끄기(ctx):
     if alarmInfo['alarmOn']:
         alarmInfo['alarmOn'] = False
         루프.cancel()
-        루프2.cancel()
         await ctx.send("알림이 꺼졌습니다..!")
     else:
         await ctx.send("이미 알림이 꺼져있어..!")
@@ -190,7 +169,6 @@ async def 재획용(ctx):
         # await ctx.send('알람이 꺼져있어! (#알림켜기#)')
         alarmInfo['alarmOn'] = True
         루프.start()
-        루프2.start()
         await ctx.send("알림이 켜졌습니다!")
         # 함수 안에 함수 넣는 방법 아시는 분..?
 
