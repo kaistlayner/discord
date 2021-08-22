@@ -9,20 +9,23 @@ testChattingId = 832286544496033846
 # 야영지 서버
 serverId = 540930626505932800
 chattingId = 878736864633315358
-#chattingId = 710809428450082876 음성채팅방 대화방
+# 메--창 서버
+serverId2 = 808742146391801856
+chattingId2 = 878999964351606784
+
 
 alarmLst = [] 
+alarmLst2 = [] 
 alarmInfo = {}
 alarmInfo['alarmOn'] = False
-alarmInfo['alarmCnt'] = 0
-alarmLst2 = [] 
+
 
 @app.event
 async def on_ready():
     print('다음으로 로그인합니다: ' + 'app.user.name')
     print('connection was successful')
     await app.change_presence(status=discord.Status.online, activity=None)
-    await app.get_guild(testServerId).get_channel(testChattingId).send(f'학식봇 on!')
+    await app.get_guild(testServerId).get_channel(testChattingId).send(f'학식봇 재시작!')
     alarmLst2.append(39)
 
 # TODO: 경뿌 알림이( 29분 59분)
@@ -46,6 +49,12 @@ async def 루프():
             await app.get_guild(serverId).get_channel(chattingId).send(f'10초 전 ({curMin+1}분)', tts=True)
             alarmLst.append(curMin)
             time.sleep(11)
+
+@tasks.loop(seconds=1)
+async def 루프2():
+    curSec = datetime.datetime.now().second
+    curMin = datetime.datetime.now().minute
+    curHour = datetime.datetime.now().hour
     if curMin in alarmLst2:
         if curHour % 2 == 0:
             if curSec > 1:
@@ -118,6 +127,7 @@ async def 켜기(ctx):
     if not alarmInfo['alarmOn']:
         alarmInfo['alarmOn'] = True
         루프.start()
+        루프2.start()
         await ctx.send("알림이 켜졌습니다!")
     else:
         await ctx.send("이미 알림이 켜져있어..!")
@@ -127,6 +137,7 @@ async def 끄기(ctx):
     if alarmInfo['alarmOn']:
         alarmInfo['alarmOn'] = False
         루프.cancel()
+        루프2.cancel()
         await ctx.send("알림이 꺼졌습니다..!")
     else:
         await ctx.send("이미 알림이 꺼져있어..!")
@@ -171,6 +182,7 @@ async def 재획용(ctx):
         # await ctx.send('알람이 꺼져있어! (#알림켜기#)')
         alarmInfo['alarmOn'] = True
         루프.start()
+        루프2.start()
         await ctx.send("알림이 켜졌습니다!")
         # 함수 안에 함수 넣는 방법 아시는 분..?
 
