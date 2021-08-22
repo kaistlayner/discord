@@ -165,7 +165,7 @@ async def 리스트2(ctx):
 
 @app.command()
 async def 지금(ctx):
-    await ctx.send(f'{datetime.datetime.now().hour}시 {datetime.datetime.now().minute}분 {datetime.datetime.now().minute}초야!')
+    await ctx.send(f'{datetime.datetime.now().day}일 {datetime.datetime.now().hour}시 {datetime.datetime.now().minute}분 {datetime.datetime.now().minute}초야!')
 
 @app.command()
 async def 재획용(ctx):
