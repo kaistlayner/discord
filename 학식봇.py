@@ -24,8 +24,16 @@ async def on_ready():
     print('다음으로 로그인합니다: ' + app.user.name)
     print('connection was successful')
     await app.change_presence(status=discord.Status.online, activity=None)
-    await app.get_guild(테스트서버).get_channel(일반채팅).send(f'학식봇 재시작!')
+    await app.get_guild(테스트서버).get_channel(일반채팅).send('학식봇 재시작!')
+    # await app.get_guild(야영지서버).get_channel(재획알림방).send('학식봇 재시작!')
+    # await app.get_guild(메창서버).get_channel(재획알리미).send('학식봇 재시작!')
     alarmLst2.append(39)
+    del alarmLst[:]
+    alarmLst.append(29)
+    alarmLst.append(59)
+    if not alarmInfo['alarmOn']:
+        alarmInfo['alarmOn'] = True
+        루프.start()
 
 # TODO: 경뿌 알림이( 29분 59분)
 @tasks.loop(seconds=1)
