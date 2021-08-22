@@ -41,7 +41,7 @@ async def 루프():
     cur = datetime.datetime.now()
     curSec = cur.second
     curMin = cur.minute
-    curHour = cur.hour
+    curHour = cur.hour - 15
     if curMin in alarmLst:
         if curSec == 0:
             await app.get_guild(야영지서버).get_channel(재획알림방).send(f'{curMin}분!', tts=True)
@@ -56,12 +56,6 @@ async def 루프():
             await app.get_guild(메창서버).get_channel(재획알리미).send(f'10초 전 ({curMin+1}분)', tts=True)
             return
     if (curMin in alarmLst2) and (curHour % 2 == 0):
-        print(curMin)
-        print(alarmLst2)
-        print(curMin in alarmLst2)
-        print(curHour)
-        print(curHour % 2 == 0)
-        
         if curSec == 0:
             await app.get_guild(야영지서버).get_channel(재획알림방).send(f'{curMin}분! 이벤트 버프 ', tts=True)
             await app.get_guild(메창서버).get_channel(재획알리미).send(f'{curMin}분! 이벤트 버프 ', tts=True)
@@ -171,7 +165,7 @@ async def 리스트2(ctx):
 
 @app.command()
 async def 지금(ctx):
-    await ctx.send(f'{datetime.datetime.now().minute}분 {datetime.datetime.now().minute}초야!')
+    await ctx.send(f'{datetime.datetime.now().hour}시 {datetime.datetime.now().minute}분 {datetime.datetime.now().minute}초야!')
 
 @app.command()
 async def 재획용(ctx):
