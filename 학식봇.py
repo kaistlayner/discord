@@ -14,7 +14,7 @@ app = commands.Bot(command_prefix='알림')
 재획알리미 = 878999964351606784
 
 alarmLst = [] 
-alarmLst2 = [] 
+alarmLst2 = []
 alarmInfo = {}
 alarmInfo['alarmOn'] = False
 
@@ -27,7 +27,7 @@ async def on_ready():
     # await app.get_guild(테스트서버).get_channel(일반채팅).send('학식봇 재시작!')
     # await app.get_guild(야영지서버).get_channel(재획알림방).send('학식봇 재시작!')
     # await app.get_guild(메창서버).get_channel(재획알리미).send('학식봇 재시작!')
-    alarmLst2.append(39)
+    # alarmLst2.append(39)
     del alarmLst[:]
     alarmLst.append(29)
     alarmLst.append(59)
@@ -59,19 +59,19 @@ async def 루프():
             await app.get_guild(야영지서버).get_channel(재획알림방).send(f'10초 전 ({curMin+1}분)', tts=True)
             await app.get_guild(메창서버).get_channel(재획알리미).send(f'10초 전 ({curMin+1}분)', tts=True)
             return
-    if (curMin in alarmLst2) and (curHour % 2 == 0):
-        if curSec == 0:
-            await app.get_guild(야영지서버).get_channel(재획알림방).send(f'{curMin}분! 이벤트 버프 ', tts=True)
-            await app.get_guild(메창서버).get_channel(재획알리미).send(f'{curMin}분! 이벤트 버프 ', tts=True)
-            return
-        if curSec == 30:
-            await app.get_guild(야영지서버).get_channel(재획알림방).send(f'이벤트 버프 30초 전 ({curMin+1}분)', tts=True)
-            await app.get_guild(메창서버).get_channel(재획알리미).send(f'이벤트 버프 30초 전 ({curMin+1}분)', tts=True)
-            return
-        if curSec == 50:
-            await app.get_guild(야영지서버).get_channel(재획알림방).send(f'이벤트 버프 10초 전 ({curMin+1}분)', tts=True)
-            await app.get_guild(메창서버).get_channel(재획알리미).send(f'이벤트 버프 10초 전 ({curMin+1}분)', tts=True)
-            return
+    # if (curMin in alarmLst2) and (curHour % 2 == 0):
+    #     if curSec == 0:
+    #         await app.get_guild(야영지서버).get_channel(재획알림방).send(f'{curMin}분! 이벤트 버프 ', tts=True)
+    #         await app.get_guild(메창서버).get_channel(재획알리미).send(f'{curMin}분! 이벤트 버프 ', tts=True)
+    #         return
+    #     if curSec == 30:
+    #         await app.get_guild(야영지서버).get_channel(재획알림방).send(f'이벤트 버프 30초 전 ({curMin+1}분)', tts=True)
+    #         await app.get_guild(메창서버).get_channel(재획알리미).send(f'이벤트 버프 30초 전 ({curMin+1}분)', tts=True)
+    #         return
+    #     if curSec == 50:
+    #         await app.get_guild(야영지서버).get_channel(재획알림방).send(f'이벤트 버프 10초 전 ({curMin+1}분)', tts=True)
+    #         await app.get_guild(메창서버).get_channel(재획알리미).send(f'이벤트 버프 10초 전 ({curMin+1}분)', tts=True)
+    #         return
 
 @app.command()
 async def 추가(ctx, *input):
