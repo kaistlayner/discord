@@ -3,7 +3,7 @@ from discord.ext import commands, tasks
 
 app = commands.Bot(command_prefix='알림')
 
-# 테스트 서버
+# 테스트 서버 #
 테스트서버 = 832286544496033843
 일반채팅 = 832286544496033846
 # 야영지 서버
