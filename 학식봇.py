@@ -85,9 +85,10 @@ async def 루프():
 async def 추첨(ctx, *input):
     length = len(input)
     await ctx.send(f'{input} {length}명 중 당첨자는...')
-    random = randrange(length)
+    random = datetime.datetime.now().microsecond % length
     await ctx.send(input[random])
 
+@app.command()
 async def 여러명(ctx, *input):
     length = len(input) - 1
     n = input[0]
