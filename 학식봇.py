@@ -92,7 +92,7 @@ async def 추첨(ctx, *input):
 async def 여러명(ctx, *input):
     selectedPeople = []
     length = len(input) - 1
-    n = input[0]
+    n = int(input[0])
     people = list(input[1:])
     
     if(n < length):
