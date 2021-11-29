@@ -88,11 +88,14 @@ async def 추첨(ctx, *input):
     random = randrange(length)
     await ctx.send(input[random])
 
-async def 여러명(ctx, n, *input):
-    length = len(input)
+async def 여러명(ctx, *input):
+    length = len(input) - 1
+    n = input[0]
+    people = input[1:]
+    
     if(n < length):
-        await ctx.send(f'{input} {length}명 중 당첨자는...')
-        await ctx.send(random.sample(input, n))
+        await ctx.send(f'{people} {length}명 중 당첨자는...')
+        await ctx.send(random.sample(people, n))
     else:
         await ctx.send(f'뽑는 사람({n})이 사람 수({length})보다 작아야합니다..!')
     
