@@ -2,7 +2,7 @@ import discord, asyncio, datetime, time
 from discord.ext import commands, tasks
 from random import *
 
-app = commands.Bot(command_prefix='알림')
+app = commands.Bot(command_prefix='밍')
 
 # 테스트 서버 #
 테스트서버 = 832286544496033843
@@ -79,14 +79,11 @@ async def 루프():
     #         return
 
 @app.command()
-async def 랜덤(ctx, *input):
-    dstList = []
-    for person in input:
-        dstList.append(person)
-    await ctx.send(f'{dstList}중 당첨자는...')
-    length = len(dstList)
+async def 추첨(ctx, *input):
+    length = len(input)
+    await ctx.send(f'{input} {length}명 중 당첨자는...')
     random = randrange(length)
-    await ctx.send(dstList[random])
+    await ctx.send(input[random])
 
 # async def 추가(ctx, *input):
 #     for elem in input:
