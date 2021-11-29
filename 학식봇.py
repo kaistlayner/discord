@@ -6,7 +6,7 @@ app = commands.Bot(command_prefix='알림')
 
 # 테스트 서버 #
 테스트서버 = 832286544496033843
-일반채팅 = 832286544496033846
+테스트채팅 = 914897810153930833
 # 야영지 서버
 야영지서버 = 540930626505932800
 재획알림방 = 878736864633315358
@@ -28,7 +28,7 @@ async def on_ready():
     print('다음으로 로그인합니다: ' + app.user.name)
     print('connection was successful')
     await app.change_presence(status=discord.Status.online, activity=None)
-    # await app.get_guild(테스트서버).get_channel(일반채팅).send('학식봇 재시작!')
+    # await app.get_guild(테스트서버).get_channel(테스트채팅).send('학식봇 재시작!')
     await app.get_guild(야영지서버).get_channel(재획알림방).send('학식봇 재시작!')
     # await app.get_guild(메창서버).get_channel(재획알리미).send('학식봇 재시작!')
     await app.get_guild(이슬서버).get_channel(재획알림방).send('학식봇 재시작!')
