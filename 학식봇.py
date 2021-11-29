@@ -55,14 +55,17 @@ async def 루프():
         if curSec == 0:
             await app.get_guild(야영지서버).get_channel(재획알림방).send(f'{curMin}분!', tts=True)
             await app.get_guild(메창서버).get_channel(재획알리미).send(f'{curMin}분!', tts=True)
+            await app.get_guild(이슬서버).get_channel(재획알림방).send(f'{curMin}분!', tts=True)
             return
         if curSec == 30:
             await app.get_guild(야영지서버).get_channel(재획알림방).send(f'30초 전 ({curMin+1}분)', tts=True)
             await app.get_guild(메창서버).get_channel(재획알리미).send(f'30초 전 ({curMin+1}분)', tts=True)
+            await app.get_guild(이슬서버).get_channel(재획알림방).send(f'{curMin}분!', tts=True)
             return
         if curSec == 50:
             await app.get_guild(야영지서버).get_channel(재획알림방).send(f'10초 전 ({curMin+1}분)', tts=True)
             await app.get_guild(메창서버).get_channel(재획알리미).send(f'10초 전 ({curMin+1}분)', tts=True)
+            await app.get_guild(이슬서버).get_channel(재획알림방).send(f'{curMin}분!', tts=True)
             return
     # if (curMin in alarmLst2) and (curHour % 2 == 0):
     #     if curSec == 0:
@@ -85,6 +88,14 @@ async def 추첨(ctx, *input):
     random = randrange(length)
     await ctx.send(input[random])
 
+async def 여러명(ctx, n, *input):
+    length = len(input)
+    if(n < length):
+        await ctx.send(f'{input} {length}명 중 당첨자는...')
+        await ctx.send(random.sample(input, n))
+    else:
+        await ctx.send(f'뽑는 사람({n})이 사람 수({length})보다 작아야합니다..!')
+    
 # async def 추가(ctx, *input):
 #     for elem in input:
 #         num = (int)(elem)
