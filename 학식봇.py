@@ -105,6 +105,9 @@ async def 여러명(ctx, *input):
     else:
         await ctx.send(f'뽑는 사람({n})이 사람 수({length})보다 작아야합니다..!')
 
+@app.command()
+async def 읽어(ctx, *input):
+    await ctx.send(input, tts=True)
 # @app.command()
 # async def 추가(ctx, *input):
 #     for elem in input:
@@ -225,3 +228,4 @@ async def 여러명(ctx, *input):
 #         # 함수 안에 함수 넣는 방법 아시는 분..?
 
 app.run('ODc4Njc2NzYxODUwODA2MzUy.YSEpgQ.9QodKdVKGt5jinZNwxEUkkhsn-I')
+# heroku logs --tail --app maplestory-bot
