@@ -107,7 +107,7 @@ async def 여러명(ctx, *input):
 
 @app.command()
 async def 읽어(ctx, *input):
-    await ctx.send(input, tts=True)
+    await ctx.send(''.join(input), tts=True)
 # @app.command()
 # async def 추가(ctx, *input):
 #     for elem in input:
