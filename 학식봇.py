@@ -87,7 +87,7 @@ async def 추첨(ctx, *input):
     await ctx.send(f'{input} {length}명 중 당첨자는...')
     micro = datetime.datetime.now().microsecond
     random = micro % length
-    await ctx.send(f'## {input[random]} ##, ({micro}%{length} = {random})')
+    await ctx.send(f'## {(input[random]).replace(",","")} ## ({micro} % {length} = {random})')
 
 @app.command()
 async def 여러명(ctx, *input):
