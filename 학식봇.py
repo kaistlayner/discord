@@ -109,10 +109,10 @@ async def 녀(ctx, *input):
         await ctx.send(f'{input[0]}')
         await ctx.send(f'{input[1]}')
         for i in range(length // 2):
-            await ctx.send(f'{input[i*0]}{input[i*0 + 1]}')
-            person = input[i*0]
+            await ctx.send(f'{input[i*2]}{input[i*2 + 1]}')
+            person = input[i*2]
             await ctx.send(f'{person}')
-            count = int(input[i*0 + 1])
+            count = int(input[i*2 + 1])
             await ctx.send(f'{count}')
             for _ in range(count):
                 people.append(person)
