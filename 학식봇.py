@@ -105,6 +105,9 @@ async def 녀(ctx, *input):
     
     try:
         await ctx.send(f'1')
+        await ctx.send(f'{input}')
+        await ctx.send(f'{input[0]}')
+        await ctx.send(f'{input[1]}')
         for i in range(length / 2):
             await ctx.send(f'{input[i*0]}{input[i*0 + 1]}')
             person = input[i*0]
