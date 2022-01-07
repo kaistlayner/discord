@@ -111,7 +111,7 @@ async def 녀(ctx, *input):
                 people.append(person)
         noException = 1
     except:
-        ctx.send(f'잘못된 입력입니다..!')
+        await ctx.send(f'잘못된 입력입니다..!')
     
     if(noException):
         peopleCount = len(people)
