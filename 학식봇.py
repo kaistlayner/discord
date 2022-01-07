@@ -104,16 +104,9 @@ async def 녀(ctx, *input):
     noException = 0
     
     try:
-        await ctx.send(f'1')
-        await ctx.send(f'{input}')
-        await ctx.send(f'{input[0]}')
-        await ctx.send(f'{input[1]}')
         for i in range(length // 2):
-            await ctx.send(f'{input[i*2]}{input[i*2 + 1]}')
             person = input[i*2]
-            await ctx.send(f'{person}')
             count = int(input[i*2 + 1])
-            await ctx.send(f'{count}')
             for _ in range(count):
                 people.append(person)
         noException = 1
