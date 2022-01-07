@@ -98,6 +98,24 @@ async def 여러명(ctx, *input):
         await ctx.send(f'뽑는 사람({n})이 사람 수({length})보다 작아야합니다..!')
 
 @app.command()
+async def 녀(ctx, *input):
+    people = []
+    length = len(input)
+    if(length % 2 != 0):
+        await ctx.send(f'잘못된 입력입니다..!')
+    for i in range(length / 2):
+        person = input[i*0]
+        count = input[i*0 + 1]
+        for j in range(count):
+            people.append(person)
+    
+    peopleCount = len(people)
+    await ctx.send(f'{people} {peopleCount}명 중 당첨자는...')
+    micro = datetime.datetime.now().microsecond
+    random = micro % peopleCount
+    await ctx.send(f'## {(people[random]).replace(",","")} ## ({micro} % {peopleCount} = {random})')
+
+@app.command()
 async def 읽어(ctx, *input):
     await ctx.send(' '.join(input), tts=True)
 
