@@ -25,7 +25,7 @@ async def on_ready():
     print('다음으로 로그인합니다: ' + app.user.name)
     print('connection was successful')
     await app.change_presence(status=discord.Status.online, activity=None)
-    await app.get_guild(이슬서버).get_channel(이슬재획알림방).send('학식봇 재시작!')
+    await app.get_guild(테스트서버).get_channel(테스트채팅).send('학식봇 재시작!')
     alarmLst2.append(39)
     del alarmLst[:]
     alarmLst.append(29)
@@ -102,12 +102,16 @@ async def 녀(ctx, *input):
     people = []
     length = len(input)
     noException = 0
-
+    
     try:
+        await ctx.send(f'1')
         for i in range(length / 2):
+            await ctx.send(f'{input[i*0]}{input[i*0 + 1]}')
             person = input[i*0]
+            await ctx.send(f'{person}')
             count = int(input[i*0 + 1])
-            for j in range(count):
+            await ctx.send(f'{count}')
+            for _ in range(count):
                 people.append(person)
         noException = 1
     except:
