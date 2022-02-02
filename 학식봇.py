@@ -1,6 +1,6 @@
 import discord, asyncio, datetime, time
 from discord.ext import commands, tasks
-from random import *
+import random
 
 app = commands.Bot(command_prefix='밍')
 
@@ -76,9 +76,8 @@ async def 루프():
 async def 추첨(ctx, *input):
     length = len(input)
     await ctx.send(f'{input} {length}명 중 당첨자는...')
-    micro = datetime.datetime.now().microsecond
-    random = micro % length
-    await ctx.send(f'## {(input[random]).replace(",","")} ## ({micro} % {length} = {random})')
+    randomNumber = random.randint(0, length - 1)
+    await ctx.send(f'## {(input[randomNumber]).replace(",","")}')
 
 @app.command()
 async def 여러명(ctx, *input):
@@ -90,8 +89,8 @@ async def 여러명(ctx, *input):
     if(n < length):
         await ctx.send(f'{people} {length}명 중 당첨자는...')
         for i in range(n):
-            random = datetime.datetime.now().microsecond % (length - i)
-            selectedPeople.append(people.pop(random))
+            randomNumber = random.randint(0, length - 1)
+            selectedPeople.append(people.pop(randomNumber))
         await ctx.send(selectedPeople)
 
     else:
@@ -116,9 +115,56 @@ async def 녀(ctx, *input):
     if(noException):
         peopleCount = len(people)
         await ctx.send(f'{people} {peopleCount}명 중 당첨자는...')
-        micro = datetime.datetime.now().microsecond
-        random = micro % peopleCount
-        await ctx.send(f'## {(people[random]).replace(",","")} ## ({micro} % {peopleCount} = {random})')
+        randomNumber = random.randint(0, length - 1)
+        await ctx.send(f'## {(people[randomNumber]).replace(",","")}')
+
+# @app.command()
+# async def 추첨(ctx, *input):
+#     length = len(input)
+#     await ctx.send(f'{input} {length}명 중 당첨자는...')
+#     micro = datetime.datetime.now().microsecond
+#     random = micro % length
+#     await ctx.send(f'## {(input[random]).replace(",","")} ## ({micro} % {length} = {random})')
+
+# @app.command()
+# async def 여러명(ctx, *input):
+#     selectedPeople = []
+#     length = len(input) - 1
+#     n = int(input[0])
+#     people = list(input[1:])
+    
+#     if(n < length):
+#         await ctx.send(f'{people} {length}명 중 당첨자는...')
+#         for i in range(n):
+#             random = datetime.datetime.now().microsecond % (length - i)
+#             selectedPeople.append(people.pop(random))
+#         await ctx.send(selectedPeople)
+
+#     else:
+#         await ctx.send(f'뽑는 사람({n})이 사람 수({length})보다 작아야합니다..!')
+
+# @app.command()
+# async def 녀(ctx, *input):
+#     people = []
+#     length = len(input)
+#     noException = 0
+    
+#     try:
+#         for i in range(length // 2):
+#             person = input[i*2]
+#             count = int(input[i*2 + 1])
+#             for _ in range(count):
+#                 people.append(person)
+#         noException = 1
+#     except:
+#         await ctx.send(f'잘못된 입력입니다..!')
+    
+#     if(noException):
+#         peopleCount = len(people)
+#         await ctx.send(f'{people} {peopleCount}명 중 당첨자는...')
+#         micro = datetime.datetime.now().microsecond
+#         random = micro % peopleCount
+#         await ctx.send(f'## {(people[random]).replace(",","")} ## ({micro} % {peopleCount} = {random})')
 
 @app.command()
 async def 읽어(ctx, *input):
