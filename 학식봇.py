@@ -77,7 +77,7 @@ async def 추첨(ctx, *input):
     length = len(input)
     await ctx.send(f'{input} {length}명 중 당첨자는...')
     randomNumber = random.randint(0, length - 1)
-    await ctx.send(f'## {(input[randomNumber]).replace(",","")}')
+    await ctx.send(f'## {(input[randomNumber]).replace(",","")} ##')
 
 @app.command()
 async def 여러명(ctx, *input):
@@ -116,7 +116,7 @@ async def 녀(ctx, *input):
         peopleCount = len(people)
         await ctx.send(f'{people} {peopleCount}명 중 당첨자는...')
         randomNumber = random.randint(0, length - 1)
-        await ctx.send(f'## {(people[randomNumber]).replace(",","")}')
+        await ctx.send(f'## {(people[randomNumber]).replace(",","")} ##')
 
 # @app.command()
 # async def 추첨(ctx, *input):
