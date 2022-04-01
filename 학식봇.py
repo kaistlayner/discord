@@ -34,7 +34,7 @@ async def on_ready():
         alarmInfo['alarmOn'] = True
         루프.start()
 
-# TODO: 경뿌 알림이( 29분 59분)
+# TODO: 경뿌 알림이(29분 59분)
 @tasks.loop(seconds=1)
 async def 루프():
     cur = datetime.datetime.now()
@@ -58,19 +58,19 @@ async def 루프():
             await app.get_guild(메창서버).get_channel(메창재획알림방).send(f'10초 전 ({curMin+1}분)', tts=True)
             await app.get_guild(이슬서버).get_channel(이슬재획알림방).send(f'{curMin}분!', tts=True)
             return
-    if (curMin in alarmLst2) and (curHour % 2 == 0):
-        if curSec == 0:
-            await app.get_guild(이슬서버).get_channel(이슬재획알림방).send(f'{curMin}분! 이벤트 버프 ', tts=True)
-            await app.get_guild(메창서버).get_channel(메창재획알림방).send(f'{curMin}분! 이벤트 버프 ', tts=True)
-            return
-        if curSec == 30:
-            await app.get_guild(이슬서버).get_channel(이슬재획알림방).send(f'이벤트 버프 30초 전 ({curMin+1}분)', tts=True)
-            await app.get_guild(메창서버).get_channel(메창재획알림방).send(f'이벤트 버프 30초 전 ({curMin+1}분)', tts=True)
-            return
-        if curSec == 50:
-            await app.get_guild(이슬서버).get_channel(이슬재획알림방).send(f'이벤트 버프 10초 전 ({curMin+1}분)', tts=True)
-            await app.get_guild(메창서버).get_channel(메창재획알림방).send(f'이벤트 버프 10초 전 ({curMin+1}분)', tts=True)
-            return
+    # if (curMin in alarmLst2) and (curHour % 2 == 0):
+    #     if curSec == 0:
+    #         await app.get_guild(이슬서버).get_channel(이슬재획알림방).send(f'{curMin}분! 이벤트 버프 ', tts=True)
+    #         await app.get_guild(메창서버).get_channel(메창재획알림방).send(f'{curMin}분! 이벤트 버프 ', tts=True)
+    #         return
+    #     if curSec == 30:
+    #         await app.get_guild(이슬서버).get_channel(이슬재획알림방).send(f'이벤트 버프 30초 전 ({curMin+1}분)', tts=True)
+    #         await app.get_guild(메창서버).get_channel(메창재획알림방).send(f'이벤트 버프 30초 전 ({curMin+1}분)', tts=True)
+    #         return
+    #     if curSec == 50:
+    #         await app.get_guild(이슬서버).get_channel(이슬재획알림방).send(f'이벤트 버프 10초 전 ({curMin+1}분)', tts=True)
+    #         await app.get_guild(메창서버).get_channel(메창재획알림방).send(f'이벤트 버프 10초 전 ({curMin+1}분)', tts=True)
+    #         return
 
 @app.command()
 async def 추첨(ctx, *input):
