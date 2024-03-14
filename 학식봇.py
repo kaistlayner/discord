@@ -10,9 +10,6 @@ app = commands.Bot(command_prefix='밍')
 # 메--창 서버
 메창서버 = 808742146391801856
 메창재획알림방 = 878999964351606784
-# 이슬
-이슬서버 = 815553588843118622
-이슬재획알림방 = 914890809768304720
 
 alarmLst = [] 
 alarmLst2 = []
@@ -48,15 +45,12 @@ async def 루프():
     if curMin in alarmLst:
         if curSec == 0:
             await app.get_guild(메창서버).get_channel(메창재획알림방).send(f'{curMin}분!', tts=True)
-            await app.get_guild(이슬서버).get_channel(이슬재획알림방).send(f'{curMin}분!', tts=True)
             return
         if curSec == 30:
             await app.get_guild(메창서버).get_channel(메창재획알림방).send(f'30초 전 ({curMin+1}분)', tts=True)
-            await app.get_guild(이슬서버).get_channel(이슬재획알림방).send(f'{curMin}분!', tts=True)
             return
         if curSec == 50:
             await app.get_guild(메창서버).get_channel(메창재획알림방).send(f'10초 전 ({curMin+1}분)', tts=True)
-            await app.get_guild(이슬서버).get_channel(이슬재획알림방).send(f'{curMin}분!', tts=True)
             return
     # if (curMin in alarmLst2) and (curHour % 2 == 0):
     #     if curSec == 0:
@@ -170,5 +164,5 @@ async def 녀(ctx, *input):
 async def 읽어(ctx, *input):
     await ctx.send(' '.join(input), tts=True)
 
-app.run('ODc4Njc2NzYxODUwODA2MzUy.YSEpgQ.9QodKdVKGt5jinZNwxEUkkhsn-I')
+app.run('앱키는 지워두겠습니다 ㅎㅎ')
 # heroku logs --tail --app maplestory-bot
